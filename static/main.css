@@ -1,0 +1,70 @@
+html, body{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    height: 100%;
+}
+
+.bg{
+    width: 100%;
+    height: 100vh;
+    background: linear-gradient(45deg, #a5e8e8, #99dbc9, #ffffff);
+    position: absolute;
+    overflow-y: hidden;
+}
+
+.login{
+    width: 400px;
+    background-color: rgba(140, 140, 140, 0.3);
+    border-radius: 15px;
+    text-align: center;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translateX(-50%)translateY(-50%);  
+}
+
+.usuario{
+    width: 200px;
+    position: relative;
+    top: -70px;
+}
+
+.login input[type=text]:nth-child(1){
+    padding: 15px 40px 15px 40px;
+    position: relative;
+    background-image: url('images/user_form.png');
+    background-repeat: no-repeat;
+    background-position-y: center; 
+    background-position-x: 10px; 
+    top: -40px;
+    margin: 0px 10px 20px 10px;
+    border-radius: 10px;
+    width: 70%;
+}
+
+.login input[type=text]:nth-child(2){
+    padding: 15px 40px 15px 40px;
+    background-image: url('images/key.png');
+    background-repeat: no-repeat;
+    background-position-y: center; 
+    background-position-x: 10px; 
+    position: relative;
+    border-radius: 10px;
+    top: -40px;
+    margin: 20px 10px 0px 10px;
+    width: 70%;
+}
+
+.login input[type=submit]{
+    width: 50%;
+    height: 40px;
+    padding: 10px;
+    font-size: 1.5em;
+    line-height: 20px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    color: #ffffff;
+    background-color: #568585;
+    border: 0px;
+}
