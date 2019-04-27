@@ -1,7 +1,7 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, redirect, flash, session
 
 app = Flask(__name__)
-
+app.secret_key = 'telcom'
 
 class Cliente:
     def __init__(self, id, nome, telefone):
@@ -62,5 +62,24 @@ def createc():
     nclie = Cliente(id, nome, telefone)
     listaC.append(nclie)
     return render_template('clientes.html', titulo='Lista de Clientes', names=listaC)
+
+@app.route('/login')
+def logar():
+    return render_template('home.html')
+
+@app.route('/autenticar', methods=['POST', ])
+def autenticar():
+    if 'mestra' == request.form['pass']:
+        session['usuario_logado'] = request.form['user']
+        flash(request.form['user'] + ' logou com sucesso!')
+        return redirect('/clientes')
+    else:
+        return redirect('/home')
+
+@app.route('/logout')
+def logout():
+    session['usuario_logado'] = None
+    flash('Nenhum usuário logado!')
+    return redirect('/')
 
 app.run()
