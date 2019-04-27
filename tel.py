@@ -16,6 +16,11 @@ class Funcionario:
         self.telefone = telefone
         self.departamento = departamento
 
+class Usuario:
+    def __init__(self, id, senha):
+        self.id = id
+        self.senha = senha
+
 F1 = Funcionario('00001', 'Marcão', '4002-8922', 'ADM')
 F2 = Funcionario('00002', 'Marcião', '4002-8922', 'T.I')
 listaF = [F1, F2]
@@ -23,6 +28,14 @@ listaF = [F1, F2]
 C1 = Cliente('001', 'Marcio', '4002-8922')
 C2 = Cliente('002', 'Mario', '4002-8922')
 listaC = [C1, C2]
+
+usuario1 = Usuario('001', '1234')
+usuario2 = Usuario('002', '1234')
+usuario3 = Usuario('003', '1234')
+
+usuarios = {usuario1.id: usuario1,
+            usuario2.id: usuario2,
+            usuario3.id: usuario3}
 
 @app.route('/')
 def inicio():
@@ -38,10 +51,14 @@ def funcionarios():
 
 @app.route('/novof')
 def novof():
+    if 'usuario_logado' not in session or session['usuario_logado'] == None:
+        return redirect('/login')
     return render_template('nfunc.html', titulo='Novo Funcionario')
 
 @app.route('/novoc')
 def novoc():
+    if 'usuario_logado' not in session or session['usuario_logado'] == None:
+        return redirect('/login')
     return render_template('nclie.html', titulo='Novo Cliente')
 
 @app.route('/criarf', methods=['POST',])
@@ -69,12 +86,14 @@ def logar():
 
 @app.route('/autenticar', methods=['POST', ])
 def autenticar():
-    if 'mestra' == request.form['pass']:
-        session['usuario_logado'] = request.form['user']
-        flash(request.form['user'] + ' logou com sucesso!')
+    if request.form['user'] in usuarios:
+        usuario = usuarios[request.form['user']]
+        if usuario.senha == request.form['pass']:
+            session['usuario_logado'] = usuario.id
+            flash(usuario.id + ' logou com sucesso!')
         return redirect('/clientes')
     else:
-        return redirect('/home')
+        return redirect('/')
 
 @app.route('/logout')
 def logout():
