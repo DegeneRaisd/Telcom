@@ -37,9 +37,14 @@ usuarios = {usuario1.id: usuario1,
             usuario2.id: usuario2,
             usuario3.id: usuario3}
 
+
 @app.route('/')
-def inicio():
+def logar():
     return render_template('home.html')
+
+@app.route('/select')
+def select():
+    return render_template('selectTable.html')
 
 @app.route('/clientes')
 def clientes():
@@ -51,14 +56,10 @@ def funcionarios():
 
 @app.route('/novof')
 def novof():
-    if 'usuario_logado' not in session or session['usuario_logado'] == None:
-        return redirect('/login')
     return render_template('nfunc.html', titulo='Novo Funcionario')
 
 @app.route('/novoc')
 def novoc():
-    if 'usuario_logado' not in session or session['usuario_logado'] == None:
-        return redirect('/login')
     return render_template('nclie.html', titulo='Novo Cliente')
 
 @app.route('/criarf', methods=['POST',])
@@ -80,10 +81,6 @@ def createc():
     listaC.append(nclie)
     return render_template('clientes.html', titulo='Lista de Clientes', names=listaC)
 
-@app.route('/login')
-def logar():
-    return render_template('home.html')
-
 @app.route('/autenticar', methods=['POST', ])
 def autenticar():
     if request.form['user'] in usuarios:
@@ -91,7 +88,7 @@ def autenticar():
         if usuario.senha == request.form['pass']:
             session['usuario_logado'] = usuario.id
             flash(usuario.id + ' logou com sucesso!')
-        return redirect('/clientes')
+        return redirect('/select')
     else:
         return redirect('/')
 

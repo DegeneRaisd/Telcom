@@ -43,7 +43,7 @@ html, body{
     width: 70%;
 }
 
-.login input[type=text]:nth-child(2){
+.login input[type=password]{
     padding: 15px 40px 15px 40px;
     background-image: url('images/key.png');
     background-repeat: no-repeat;
@@ -67,4 +67,76 @@ html, body{
     color: #ffffff;
     background-color: #568585;
     border: 0px;
+}
+
+.principal{
+    width: 80%;
+    height: 50%;
+    position: relative;
+    top: 50%;
+    left: 50%;
+    font-size: 1.6em;
+    transform: translateX(-50%)translateY(-50%);
+}
+
+
+.clie{
+    display: inline-block;
+    background: linear-gradient(45deg, #49a5a5, #5fc0a6, #8be7db);
+    border-radius: 10px;
+    box-shadow: 5px 5px 5px gray;
+    width: calc(50% - 44px);
+    height: 100%;
+    position: relative;
+    float: left;
+}
+
+.clie span{
+    display: inline-block;
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%)translateY(-50%);
+}
+
+.func{
+    display: inline-block;
+    width: calc(50% - 44px);
+    background: linear-gradient(45deg, #49a5a5, #5fc0a6, #8be7db);
+    border-radius: 10px;
+    box-shadow: 5px 5px 5px gray;
+    height: 100%;
+    position: relative;
+    float: right;
+}
+
+.func span{
+    display: inline-block;
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%)translateY(-50%);
+}
+
+.principal a{
+    text-decoration: none;
+    color: #f1f1f1;
+    text-shadow: 2px 2px #222;
+}
+
+.principal a:hover{
+    text-decoration: none;
+    color: #f1f1f1;
+    text-shadow: 2px 2px #222;
+}
+
+.clear{
+    clear: both;
+}
+
+.voltar{
+    position: relative;
+    margin-top: 18%;
+    left: 50%;
+    transform: translateX(-50%);
 }

@@ -8,15 +8,6 @@
   </head>
   <body>
     <div class="container">
-        {% with messages = get_flashed_messages() %}
-            {% if messages %}
-                <ul id="messages" class="list-unstyled">
-                {% for message in messages %}
-                    <li class="alert alert-success">{{ message }}</li>
-                {% endfor %}
-                </ul>
-            {% endif %}
-        {% endwith %}
         <div class="page-header container">
             <h1>{{ titulo }}</h1>
         </div>
@@ -40,6 +31,8 @@
             {% endfor %}
             </tbody>
         </table>
+        <a class="btn btn-success" href="{{ url_for('novof') }}">Novo</a>
+        <a class="btn btn-danger text-white" href="{{ url_for('select') }}">Voltar</a>
     </div>
   </body>
 </html>

@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Bem vindo!</title>
+        <link rel="stylesheet" href="../static/main.css" />
+        <link rel="stylesheet" href="../static/bootstrap.css" />
+    </head>
+    <body class="bg">
+        <main class="principal">
+            <section class="clie">
+                <span><a href="{{ url_for('clientes') }}">Clientes</a></span>
+            </section>
+            <section class="func">
+                <span><a href="{{ url_for('funcionarios') }}">Funcionários</a></span>
+            </section>
+        </main>
+        <a class="voltar btn btn-danger" href="{{ url_for('logout') }}">Voltar</a>
+    </body>
+</html>

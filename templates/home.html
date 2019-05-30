@@ -10,20 +10,11 @@
 </head>
 <body>
     <section class="bg">
-        {% with messages = get_flashed_messages() %}
-            {% if messages %}
-                <ul id="messages" class="list_unstyled">
-                {% for message in messages %}
-                    <li class="alert alert-success">{{ message }}</li>
-                {% endfor %}
-                </ul>
-            {% endif %}
-        {% endwith %}
         <div class="login">
             <img class="usuario" src="../static/images/user.png" />
             <form action="/autenticar" method="POST">
-                <input type="text" name="user" placeholder="ID" />
-                <input type="text" name="pass" placeholder="Senha" />
+                <input type="text" required maxlength="3" name="user" placeholder="ID" />
+                <input type="password" required maxlength="4" name="pass" placeholder="Senha" />
                 <input type="submit" name="logar" value="Entrar" />
             </form>
         </div><!--form login-->
